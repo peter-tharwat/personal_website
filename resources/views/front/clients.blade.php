@@ -17,8 +17,8 @@ $clients = \App\Models\Client::orderBy('id','DESC')->paginate();
     @foreach($clients as $client)
     <div class="col-12 col-12 col-md-6 col-lg-3 ">
       <a href="{{route('front.client.show',$client)}}" class="d-block">
-        <div class="col-12 p-0 ">
-          <img  src="{{$client->image()}}" style="width:100%">
+        <div class="col-12 p-0 justify-content-center d-flex">
+          <img  src="{{$client->image()}}" style="max-width:100%;max-height: 200px;" class="d-inline-block p-3">
           <div class="col-12 p-2 text-center ">
             <h2 style="font-size:15px;line-height: 1.8;">{{$client->title}}</h2>
           </div>
