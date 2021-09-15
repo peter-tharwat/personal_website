@@ -8,6 +8,9 @@ $portfolios = \App\Models\Portfolio::orderBy('id','DESC')->paginate();
 ])
 @section('content')
 <div class="col-12 p-0">
+  <div style="width:650px;max-width: 100%;text-align: justify;" class="mx-auto p-3 font-2 optimize-fonts">
+    {!!$settings->portfolios_text!!}
+  </div>
   <div class="col-12 row p-2">
     @foreach($portfolios as $portfolio)
     <div class="col-12 col-12 col-md-6 col-lg-3 ">
