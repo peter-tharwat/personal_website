@@ -48,7 +48,9 @@ $settings=\App\Models\User::first();
         .optimize-fonts *{
           font-family: 'naskh',sans-serif!important;
         }
-        
+        .optimize-fonts * {
+          line-height: 1.9;
+        }
         .optimize-fonts img{
           cursor: pointer;
           text-align: center;
