@@ -9,6 +9,9 @@ class Client extends Model
 {
     use HasFactory;
     protected $guarded=['id','created_at','updated_at'];
+    public function getRouteKeyName(){
+        return 'slug';
+    }
     public function image() {
         if($this->image==null)
             return env("DEFAULT_IMAGE");
