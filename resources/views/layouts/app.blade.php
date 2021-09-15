@@ -52,7 +52,7 @@ $settings=\App\Models\User::first();
         .optimize-fonts img{
           cursor: pointer;
           text-align: center;
-          direction: inline-block;
+          display: inline-block;
         }
 
         .optimize-fonts blockquote ,.optimize-fonts blockquote *{
