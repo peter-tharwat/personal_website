@@ -11,7 +11,7 @@
     font-display: swap;*/
 }
 
-*:not(.fileuploader):not([class^="fa"]):not(.cairo):not([class^="vj"]):not([class^="tie-"]){
+*:not(.fileuploader):not([class^="fa"]):not(.cairo):not([class^="vj"]):not([class^="tie-"]):not([class*="fileuploader-icon-"]){
 	font-family: 'Helvet',arial!important; 
     direction: rtl; 
 

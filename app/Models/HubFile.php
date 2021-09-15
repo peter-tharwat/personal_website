@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Link extends Model
+class HubFile extends Model
 {
     use HasFactory;
+    public $table="hub_files";
+    protected $guarded=['id','created_at','updated_at'];
 }

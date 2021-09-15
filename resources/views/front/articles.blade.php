@@ -1,33 +1,29 @@
+@php
+$settings  = \App\Models\User::first();
+$articles = \App\Models\Article::orderBy('id','DESC')->paginate();
+@endphp
 @extends('layouts.app',[
-  'page_title'=>"Peter Tharwat",
-  'page_description'=>"Peter Tharwat",
-  'page_image'=>"Image"
+  'page_title'=>"كتاباتي",
+  'page_description'=>"كتاباتي ".$settings->name
 ])
 @section('content')
 <div class="col-12 p-0">
-  <div style="width:650px;max-width: 100%;text-align: justify;" class="mx-auto p-3 font-2 naskh">
-      <h6 class="text-start mt-3 mb-2" style="font-weight: bold;">مهندس برمجيات</h6>
-      <p class="naskh">
-      مهندس برمجيات - مطور مواقع انترنت حاصل على بكالوريوس في الحاسبات و الذكاء الاصطناعي .
-      </p>
-      <h6 class="text-start mt-3 mb-2" style="font-weight: bold;">مؤسس منصة نفذلي</h6>
-      <p class="naskh">منصة نفذلي هي منصة عربية تساعد رواد الأعمال وأصحاب المشاريع على الوصول إلى أفضل المستقلين المحترفين من مطوري المواقع، تطبيقات الجوال، مصممي الجرافيك والهوية البصرية، الموشن جرافيك، صناعة المحتوى الى محترفي التسويق الإلكتروني وغيرها من التخصصات في شتى المجالات، لتوظيفهم عن بعد وطلب خدماتهم بسهولة. كما تساعد المبدعين على تقديم خدماتهم وإنجاز المشاريع في التخصصات السابقة مع ضمان كامل حقوق الطرفين.
-      </p>
-      <h6 class="text-start mt-3 mb-2" style="font-weight: bold;">وكذلك ..</h6>
-      <p class="naskh" >قدمت العديد من الحلول التقنية إلى العديد من العملاء و اصحاب الأعمال
-      ساعدت في نجاح وتعزيز العديد من الشركات .
-      يمكنني مساعدتك وتقديم الاستشارات التقنية لك ، فما دمت استطيع المساعدة سأفعل .
-      
-      </p>
-      <h6 class="text-start mt-3 mb-2" style="font-weight: bold;">بعض التقنيات</h6>
-      <p class="naskh" > استطيع الكتابة ببعض التقنيات والتي تساعدني في تطوير وبرمجة تطبيقات الويب . استخدم عادة 
-         Bootstrap و VueJs وكذلك Laravel
-          <br>
-           <!-- <span class="fal fa-smile"></span> --> لا تقلق بشأن الإصدارات فأنا أستخدم أحدث إصدار في هذه التقنيات .
-      </p>
-      <h6 class="text-start mt-3 mb-2" style="font-weight: bold;">أؤمن بالبساطة !</h6>
-      <p class="naskh" > لذا لن تواجه أي صعوبة في فهم أي جزء هذه الصفحات فكل شئ بسيطاً كما ترى !
-      </p>
+  <div class="col-12 row p-2">
+    @foreach($articles as $article)
+    <div class="col-12 col-12 col-md-6 col-lg-3 ">
+      <a href="{{route('front.article.show',$article)}}" class="d-block">
+        <div class="col-12 p-0 ">
+          <img  src="{{$article->image()}}" style="width:100%" >
+          <div class="col-12 p-2 text-center ">
+            <h2 style="font-size:15px;line-height: 1.8;">{{$article->title}}</h2>
+          </div>
+        </div>
+      </a>
     </div>
+    @endforeach
+  </div>
+  <div class="col-12 p-3">
+    {{$articles->links()}}
+  </div>
 </div>
 @endsection

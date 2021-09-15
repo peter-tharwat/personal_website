@@ -12,9 +12,13 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $articles= Article::where(function($q)use ($request){
+            $q->where('title','LIKE','%'.$request->key.'%')
+            ->orWhere('description','LIKE'.'%'.$request->key.'%');
+        })->orderBy('id','DESC')->paginate();
+        return view('admin.articles.index',compact('articles'));
     }
 
     /**
@@ -24,7 +28,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articles.create');
     }
 
     /**
@@ -35,7 +39,36 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $article = Article::create([
+            'user_id'=>auth()->user()->id,
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'featured'=>$request->featured==1?1:0,
+            'slug'=>uniqid()
+        ]);
+        $article->update(['slug' =>
+            $this->generate_slug($article->id . '-' . $article->title),
+        ]); 
+        if($request->hasFile('image')){
+            $file =$this->store_file([
+                'source'=>$request->image,
+                'validation'=>"image",
+                'path_to_save'=>'/uploads/articles/',
+                'type'=>'ARTICLE', 
+                'user_id'=>\Auth::user()->id,
+                'resize'=>[500,3000],
+                'small_path'=>'small/',
+                'visibility'=>'PUBLIC',
+                'file_system_type'=>env('FILESYSTEM_DRIVER'),
+                /*'watermark'=>true,*/
+                'compress'=>'auto'
+            ])['filename']; 
+            $this->use_hub_file($file, $article->id, auth()->user()->id);
+            $article->update(['image'=>$file]);
+        }
+        emotify('success', 'تمت العملية بنجاح');
+        return redirect()->route('admin.articles.index');
     }
 
     /**
@@ -57,7 +90,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('admin.articles.edit',compact('article'));
     }
 
     /**
@@ -69,7 +102,32 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'link'=>$request->link,
+            'featured'=>$request->featured==1?1:0,
+        ]);
+        if($request->hasFile('image')){
+            $this->remove_hub_file($article->image);
+            $file =$this->store_file([
+                'source'=>$request->image,
+                'validation'=>"image",
+                'path_to_save'=>'/uploads/articles/',
+                'type'=>'ARTICLE', 
+                'user_id'=>\Auth::user()->id,
+                'resize'=>[500,3000],
+                'small_path'=>'small/',
+                'visibility'=>'PUBLIC',
+                'file_system_type'=>env('FILESYSTEM_DRIVER'),
+                /*'watermark'=>true,*/
+                'compress'=>'auto'
+            ])['filename']; 
+            $this->use_hub_file($file, $article->id, auth()->user()->id);
+            $article->update(['image'=>$file]);
+        }
+        emotify('success', 'تمت العملية بنجاح');
+        return redirect()->route('admin.articles.index');
     }
 
     /**
@@ -80,6 +138,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        emotify('success', 'تمت العملية بنجاح');
+        return redirect()->route('admin.articles.index');
     }
 }

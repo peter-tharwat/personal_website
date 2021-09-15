@@ -8,11 +8,14 @@
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.6",
         "laravel-lang/lang": "~8.0",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "mckenziearts/laravel-notify": "^2.2"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "mckenziearts/laravel-notify": "^2.2",
+        "nesbot/carbon": "^2.53"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

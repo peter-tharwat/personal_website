@@ -17,10 +17,10 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -41,4 +41,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function avatar () {
+        if($this->avatar==null)
+            return env("DEFAULT_IMAGE");
+        else return env("STORAGE_URL")."/uploads/avatars/".$this->avatar;
+    }
+    public function website_logo(){
+        if($this->website_logo==null)
+            return $this->avatar();
+        else return env("STORAGE_URL")."/uploads/website_logos/".$this->website_logo;
+    }
 }

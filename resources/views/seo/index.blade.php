@@ -1,13 +1,16 @@
 @php 
-$website_url="" ;
-$website_name="" ;
-$website_logo="" ;
-$page_image="" ;
-$page_title="" ;
-$page_keywords="" ;
-$page_description="" ;
-$phone="+201234567890"
+$settings=\App\Models\User::firstOrFail();
+$website_url=env("APP_URL");
+$website_name=$settings->name;
+$website_logo=$settings->website_logo();
+$page_image= isset($page_image)&&$page_image !=null?$page_image:$settings->avatar();
+$page_title= isset($page_title)&&$page_title !=null?$settings->name.' | '.$page_title:$settings->name;
+$page_keywords=$settings->name;
+$page_description=isset($page_description)&&$page_description !=null?$page_description:$settings->bio;
+$phone=$settings->phone;
 @endphp
+
+<title> {{$page_title}} </title>
 
 <script type="application/ld+json">
 {
@@ -18,13 +21,21 @@ $phone="+201234567890"
     "logo": "{{$website_logo}}",
     "sameAs": [
 
-        {{-- 
-        "https://twitter.com/Nafezly",
-        "https://www.facebook.com/Nafezly",
-        "https://www.youtube.com/channel/UC0lI3SXBt-Nn2Oyss4dAbOQ",
-        "https://www.instagram.com/Nafezly",
-        "https://www.linkedin.com/company/Nafezly" 
-        --}}
+        @if($settings->twitter_link!=null)
+        {{$settings->twitter_link}},
+        @endif
+        @if($settings->facebook_link!=null)
+        {{$settings->facebook_link}},
+        @endif
+        @if($settings->youtube_link!=null)
+        {{$settings->youtube_link}},
+        @endif
+        @if($settings->instagram_link!=null)
+        {{$settings->instagram_link}},
+        @endif
+        @if($settings->linkedin_link!=null)
+        {{$settings->linkedin_link}},
+        @endif
     ],
     "contactPoint": [{
             "@type": "ContactPoint",

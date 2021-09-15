@@ -13,6 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::query()->delete();
+        \App\Models\User::create([
+            'name'=>"إسم المستخدم",
+            'email'=>"admin@admin.com",
+            'password'=>bcrypt('password'),
+            'email_verified_at'=>now(),
+            'main_color'=>"#03a9f4",
+            'hover_color'=>"#e9f2f6",
+        ]);
     }
 }

@@ -12,9 +12,13 @@ class FaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $faqs=Faq::where(function($q) use($request){
+            $q->where('question','LIKE','%'.$request->key.'%')
+            ->orWhere('answer','LIKE','%'.$request->key.'%');
+        })->orderBy('id','DESC')->paginate();
+        return view('admin.faqs.index',compact('faqs'));
     }
 
     /**
@@ -22,9 +26,9 @@ class FaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('admin.faqs.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Faq::create([
+            'user_id'=>auth()->user()->id,
+            'question'=>$request->question,
+            'answer'=>$request->answer,
+            'featured'=>$request->featured==1?1:0
+        ]);
+        emotify('success','تمت العملية بنجاح');
+        return redirect()->route('admin.faqs.index');
     }
 
     /**
@@ -46,7 +57,7 @@ class FaqController extends Controller
      */
     public function show(Faq $faq)
     {
-        //
+        return 0;
     }
 
     /**
@@ -57,7 +68,7 @@ class FaqController extends Controller
      */
     public function edit(Faq $faq)
     {
-        //
+        return view('admin.faqs.edit',compact('faq'));
     }
 
     /**
@@ -69,7 +80,13 @@ class FaqController extends Controller
      */
     public function update(Request $request, Faq $faq)
     {
-        //
+        $faq->update([
+            'question'=>$request->question,
+            'answer'=>$request->answer,
+            'featured'=>$request->featured==1?1:0
+        ]);
+        emotify('success','تمت العملية بنجاح');
+        return redirect()->route('admin.faqs.index');
     }
 
     /**
@@ -80,6 +97,8 @@ class FaqController extends Controller
      */
     public function destroy(Faq $faq)
     {
-        //
+        $faq->delete();
+        emotify('success','تمت العملية بنجاح');
+        return redirect()->route('admin.faqs.index');
     }
 }

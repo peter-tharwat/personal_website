@@ -14,7 +14,13 @@ class CreatePortfoliosTable extends Migration
     public function up()
     {
         Schema::create('portfolios', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('slug')->unique();
+            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade'); 
+            $table->text('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->text('link')->nullable();
             $table->timestamps();
         });
     }

@@ -12,9 +12,19 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        /*contact_name
+        contact_email
+        contact_phone
+        contact_message*/
+        $contacts=Contact::where(function($q) use($request){
+            $q->where('contact_name','LIKE','%'.$request->key.'%')
+            ->orWhere('contact_email','LIKE','%'.$request->key.'%')
+            ->orWhere('contact_phone','LIKE','%'.$request->key.'%')
+            ->orWhere('contact_message','LIKE','%'.$request->key.'%');
+        })->orderBy('id','DESC')->paginate();
+        return view('admin.contacts.index',compact('contacts'));
     }
 
     /**
@@ -80,6 +90,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        emotify('success','تمت العملية بنجاح');
+        return redirect()->back();
     }
 }
