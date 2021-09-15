@@ -20,6 +20,13 @@ $settings  = \App\Models\User::first();
         @endforeach
         <br>
           {!!$portfolio->description!!}
+        <div class="col-12 p-3">
+          @if($portfolio->link!=null)
+              <a href="{{$portfolio->link}}" class="btn btn-success">الرابط</a>
+          @endif
+        </div>
+        
+
       </div>
   </div>
   </div>

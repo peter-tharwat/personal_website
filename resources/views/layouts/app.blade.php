@@ -48,6 +48,11 @@ $settings=\App\Models\User::first();
         .optimize-fonts *{
           font-family: 'naskh',sans-serif!important;
         }
+        
+        .optimize-fonts img{
+          cursor: pointer;
+        }
+
         .optimize-fonts blockquote ,.optimize-fonts blockquote *{
           text-align: center;
         }

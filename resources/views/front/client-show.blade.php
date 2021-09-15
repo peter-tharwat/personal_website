@@ -15,6 +15,12 @@ $settings  = \App\Models\User::first();
           <img src="{{$client->image()}}" style="width: 100%;" data-fancybox="gallery">
           <br>
             {!!$client->description!!}
+
+          <div class="col-12 p-3">
+          @if($client->link!=null)
+              <a href="{{$client->link}}" class="btn btn-success">الرابط</a>
+          @endif
+        </div>
         </div>
     </div>
   </div>
