@@ -10,12 +10,13 @@ $settings  = \App\Models\User::first();
 <div class="col-12 p-0">
   <div class="col-12 row p-2">
    <div class="col-12 p-0">
-        <div style="width:650px;max-width: 100%;text-align: justify;" class="mx-auto p-3 font-2 optimize-fonts border">
+        <div style="width:650px;max-width: 100%;text-align: justify;" class="mx-auto p-3 font-2 optimize-fonts ">
           <h4 class="py-3 text-center">{{$client->title}}</h4>
-          <img src="{{$client->image()}}" style="width: 100%;" data-fancybox="gallery">
+          <img src="{{$client->image()}}" style="max-width: 100%;" data-fancybox="gallery" class="d-inline-block">
           <br>
+          <div class="col-12 p-2" style="overflow:hidden">
             {!!$client->description!!}
-
+          </div>
           <div class="col-12 p-3">
           @if($client->link!=null)
               <a href="{{$client->link}}" class="btn btn-success">الرابط</a>

@@ -27,11 +27,9 @@ Route::name('front.')->group(function () {
     Route::get('/hire', [FrontEndController::class,'hire'])->name('hire');
 });
 
-// files
 Route::get('/manifest.json', [FrontFileController::class,'manifest_json'])->name('manifest_json');
 Route::get('/robots.txt', [FrontFileController::class,'robots_txt'])->name('robots_txt');
 
-// admin dashboard
 Route::name('admin.')->prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('upload-image',[AdminController::class,'upload_image'])->name('upload-image');
     Route::get('/', function () { return view('admin.index'); })->name('dashboard');
