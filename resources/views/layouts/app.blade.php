@@ -60,6 +60,9 @@ $settings=\App\Models\User::first();
         .optimize-fonts blockquote ,.optimize-fonts blockquote *{
           text-align: center;
         }
+        .optimize-fonts a{
+          color: #2196f3;
+        }
         .optimize-fonts ,
         .optimize-fonts h1,
         .optimize-fonts h2,
