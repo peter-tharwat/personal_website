@@ -12,7 +12,7 @@ $articles = \App\Models\Article::orderBy('id','DESC')->paginate();
     {!!$settings->articles_text!!}
   </div>
 
-  <div class="col-12 row p-2">
+  <div class="col-12 row p-2 d-flex justify-content-center">
     @foreach($articles as $article)
     <div class="col-12 col-12 col-md-6 col-lg-3 ">
       <a href="{{route('front.article.show',$article)}}" class="d-block">

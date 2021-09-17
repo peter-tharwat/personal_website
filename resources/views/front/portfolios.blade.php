@@ -11,7 +11,7 @@ $portfolios = \App\Models\Portfolio::orderBy('id','DESC')->paginate();
   <div style="width:650px;max-width: 100%;text-align: justify;" class="mx-auto p-3 font-2 optimize-fonts">
     {!!$settings->portfolios_text!!}
   </div>
-  <div class="col-12 row p-2">
+  <div class="col-12 row p-2 d-flex justify-content-center">
     @foreach($portfolios as $portfolio)
     <div class="col-12 col-12 col-md-6 col-lg-3 ">
       <a href="{{route('front.portfolio.show',$portfolio)}}" class="d-block">

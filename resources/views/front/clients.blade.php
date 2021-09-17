@@ -13,7 +13,7 @@ $clients = \App\Models\Client::orderBy('id','DESC')->paginate();
     {!!$settings->clients_text!!}
   </div>
 
-  <div class="col-12 row p-2">
+  <div class="col-12 row p-2 d-flex justify-content-center">
     @foreach($clients as $client)
     <div class="col-12 col-12 col-md-6 col-lg-3 ">
       <a href="{{route('front.client.show',$client)}}" class="d-block">

@@ -53,7 +53,7 @@ $settings=\App\Models\User::first();
         }
         .optimize-fonts img{
           cursor: pointer;
-          text-align: center;
+          text-align: center!important;
           display: inline-block;
         }
 
