@@ -7,24 +7,37 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Dont Forget To Install Extensions
+
+```
+	
+	sudo apt install openssl php-common php-curl php-json php-mbstring php-mysql php-xml php-zip php-gd
+	sudo apt-get install php-imagick
+
+```
+- then restart your system
+
 ## How to Run 
 
 ```
-- composer install
-- copy .env.example .env
-- php artisan key:generate
-- php artisan storage:link
-- php artisan migrate
-- php artisan db:seed
+	
+	- composer install
+	- cp .env.example .env
+	- php artisan key:generate
+	- php artisan storage:link
+	- php artisan migrate
+	- php artisan db:seed
 
 ```
 ---
 ## Credentials
 
 ```
-- url : yourdomain.com/login
-- email : admin@admin.com
-- password : password
+	
+	- url : yourdomain.com/login
+	- email : admin@admin.com
+	- password : password
+
 ```
 ## License
 
