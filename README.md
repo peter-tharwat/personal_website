@@ -7,6 +7,25 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Personal Website ( Arabic Version ) 
+
+- ✅ Profile
+- ✅ Portfolio
+- ✅ Clients
+- ✅ Blog
+- ✅ Links
+- ✅ Donate
+- ✅ Contact Form
+- ✅ Faqs
+- ✅ HireMe
+- ✅ Full Dashboard
+- ✅ Smart Seo
+- ✅ Simple
+
+[ demo ](https://peterayoub.me)
+
+
+
 ## Dont Forget To Install Extensions
 
 ```
