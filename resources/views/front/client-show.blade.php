@@ -17,9 +17,9 @@ $settings  = \App\Models\User::first();
           <div class="col-12 p-2" style="overflow:hidden">
             {!!$client->description!!}
           </div>
-          <div class="col-12 p-3">
+          <div class="col-12 p-3 d-flex justify-content-between">
           @if($client->link!=null)
-              <a href="{{$client->link}}" class="btn btn-success">الرابط</a>
+              <a href="{{$client->link}}" class="btn btn-success px-4 rounded-pill" style="font-family: 'kufi-arabic',sans-serif!important;">الرابط</a>
           @endif
         </div>
         </div>
