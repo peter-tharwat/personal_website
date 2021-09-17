@@ -24,7 +24,7 @@
 
 -> Demo [ https://peterayoub.me ](https://peterayoub.me)
 
-![Preview](https://github.com/[username]/[reponame]/public/screenshot.png?raw=true)
+![Preview](https://github.com/peter-tharwat/personal_website/public/screenshot.png?raw=true)
 
 ## Dont Forget To Install Extensions
 
