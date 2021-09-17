@@ -9,20 +9,20 @@
 
 ## Personal Website ( Arabic Version ) 
 
-- ✅ Profile
-- ✅ Portfolio
-- ✅ Clients
-- ✅ Blog
-- ✅ Links
-- ✅ Donate
-- ✅ Contact Form
-- ✅ Faqs
-- ✅ HireMe
-- ✅ Full Dashboard
-- ✅ Smart Seo
-- ✅ Simple
+- ✔️ Profile
+- ✔️ Portfolio
+- ✔️ Clients
+- ✔️ Blog
+- ✔️ Links
+- ✔️ Donate
+- ✔️ Contact Form
+- ✔️ Faqs
+- ✔️ HireMe
+- ✔️ Full Dashboard
+- ✔️ Smart Seo
+- ✔️ Simple Design
 
-[ demo ](https://peterayoub.me)
+-> Demo [ https://peterayoub.me ](https://peterayoub.me)
 
 
 
