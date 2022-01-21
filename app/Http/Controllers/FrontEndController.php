@@ -41,7 +41,7 @@ class FrontEndController extends Controller
             'contact_phone'=>"required|integer|between:99999999,9999999999999999",
             'contact_message'=>"required|string|min:3|max:1000",
         ]);
-        if(!str_starts_with("8", $request->contact_phone)){
+        if($request->contact_phone[0]!='8'){
             Contact::create([
                 'contact_name'=>$request->contact_name,
                 'contact_email'=>$request->contact_email,
