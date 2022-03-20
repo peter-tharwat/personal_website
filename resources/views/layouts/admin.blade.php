@@ -265,7 +265,7 @@
                             <div class="col-12 pb-3" style="overflow: auto;width: 350px;height: 390px;">
                                 @foreach($notifications as $notification)
                                 <div class="col-12 px-3 text-right" style="background: {{$notification->read_at==null?'#f7f7f7':''}};overflow: hidden;">
-                                    {{$notification->data['message']}}
+                                    {!! $notification->data['message'] !!}
                                     <div class="col-12 border-bottom pb-3">
                                         <span class="font-1">
                                             <span class="fas fa-clock"></span> {{\Carbon::parse($notification->created_at)->diffForHumans()}}
